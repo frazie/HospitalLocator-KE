@@ -27,12 +27,22 @@ app.get('/', async (req,res)=>{
 
 app.get('/hospital', async (req,res)=>{
    try {
-    // const req = await fetch(`https://api.healthtools.codeforafrica.org/search/health-facilities?q=[kisumu]`)
-    //     const data = await req.json()
-    //     console.log(data)
+    
+    const facilityFetch = await fetch(
+        `https://api.healthtools.codeforafrica.org/search/health-facilities?q=[mombasa]`
+    ).then((res) => res.json())
+    .then (data => {
+        console.log(data)
+        console.log(data.result.hits[3]._source.county_name)
+        console.log(data.result.hits[3]._source.name)
+        console.log(data.result.hits[3]._source.owner_type_name)
+        console.log(data.result.hits[3]._source.facility_type_category)
+        console.log(data.result.hits[3]._source.service_names)
+    
+    })
         res.render('hospitals.ejs')
    } catch (error) {
-    
+        console.log(error)
    }
 })
 
