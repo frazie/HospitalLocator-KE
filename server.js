@@ -14,7 +14,7 @@ app.use(cors())
 // end of middleware
 
 // api urls
-hospitalsearch = 'https://api.healthtools.codeforafrica.org/search/health-facilities?q=[facility]'
+
 
 app.get('/', async (req,res)=>{
     try {
@@ -27,18 +27,26 @@ app.get('/', async (req,res)=>{
 
 app.get('/hospital', async (req,res)=>{
    try {
-    
+    let institution = 'nairobi'
     const facilityFetch = await fetch(
-        `https://api.healthtools.codeforafrica.org/search/health-facilities?q=[mombasa]`
-    ).then((res) => res.json())
+        `https://api.healthtools.codeforafrica.org/search/health-facilities?q=[${institution}]&per_page=1000`
+    )
+    .then((res) => res.json())
+  
     .then (data => {
         console.log(data)
-        console.log(data.result.hits[3]._source.county_name)
-        console.log(data.result.hits[3]._source.name)
-        console.log(data.result.hits[3]._source.owner_type_name)
-        console.log(data.result.hits[3]._source.facility_type_category)
-        console.log(data.result.hits[3]._source.service_names)
-    
+        console.log(data.result.total)
+//lopp through all the results from the data
+
+        for (let i=0;i<data.result.total;i++){
+        console.log(data.result.hits[i]._source.county_name)
+        console.log(data.result.hits[i]._source.name)
+        console.log(data.result.hits[i]._source.owner_type_name)
+        console.log(data.result.hits[i]._source.facility_type_category)
+        console.log(data.result.hits[i]._source.service_names)
+        }
+
+            
     })
         res.render('hospitals.ejs')
    } catch (error) {
