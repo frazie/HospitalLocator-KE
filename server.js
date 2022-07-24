@@ -18,6 +18,14 @@ app.use(cors())
 
 app.get('/', async (req,res)=>{
     try {
+        res.render('index.ejs')
+    } catch (error) {
+        res.status(500).send({message: error.message})
+    }
+    
+})
+app.get('/hospital', async (req,res)=>{
+    try {
         res.render('hospitals.ejs')
     } catch (error) {
         res.status(500).send({message: error.message})
@@ -25,7 +33,7 @@ app.get('/', async (req,res)=>{
     
 })
 
-app.get('/hospital/api/:facilityName', async (req,res)=>{
+app.get('/hospital/:facilityName', async (req,res)=>{
    try {
     let institution = req.params.facilityName.toLowerCase()
     const facilityFetch = await fetch(
@@ -40,7 +48,7 @@ app.get('/hospital/api/:facilityName', async (req,res)=>{
     })
     
     .then (data => {
-        console.log(data);
+        console.log(data)
         res.send(data)
         
     })
