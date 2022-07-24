@@ -18,39 +18,35 @@ app.use(cors())
 
 app.get('/', async (req,res)=>{
     try {
-        res.render('index.ejs')
+        res.render('hospitals.ejs')
     } catch (error) {
         res.status(500).send({message: error.message})
     }
     
 })
 
-app.get('/hospital', async (req,res)=>{
+app.get('/hospital/api/:facilityName', async (req,res)=>{
    try {
-    let institution = 'nairobi'
+    let institution = req.params.facilityName.toLowerCase()
     const facilityFetch = await fetch(
         `https://api.healthtools.codeforafrica.org/search/health-facilities?q=[${institution}]&per_page=1000`
     )
-    .then((res) => res.json())
-  
-    .then (data => {
-        console.log(data)
-        console.log(data.result.total)
-//lopp through all the results from the data
-
-        for (let i=0;i<data.result.total;i++){
-        console.log(data.result.hits[i]._source.county_name)
-        console.log(data.result.hits[i]._source.name)
-        console.log(data.result.hits[i]._source.owner_type_name)
-        console.log(data.result.hits[i]._source.facility_type_category)
-        console.log(data.result.hits[i]._source.service_names)
+    .then((res) => {
+        if (res.ok){
+            return res.json()
+        }else{
+            throw new Error('NETWORK RESPONSE ERROR')
         }
-
-            
     })
-        res.render('hospitals.ejs')
+    
+    .then (data => {
+        console.log(data);
+        res.send(data)
+        
+    })
+    
    } catch (error) {
-        console.log(error)
+        console.error('Fetch Error:',error)
    }
 })
 
