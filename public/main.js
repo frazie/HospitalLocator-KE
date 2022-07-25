@@ -10,7 +10,7 @@ async function hosiApiRequest(){
     try{
         const response = await fetch(hosiUrl)
         const data = await response.json()
-        console.log(data.length)
+        console.log(data)
 
        
         // let institution = []

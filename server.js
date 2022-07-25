@@ -63,6 +63,11 @@ app.get('/hospital/:facilityName', async (req,res)=>{
             this.owner = data.result.hits[i]._source.owner_type_name
             this.county_name = data.result.hits[i]._source.county_name
             this.services = data.result.hits[i]._source.service_names
+            this.constituency = data.result.hits[i]._source.constituency_name
+            this.ward = data.result.hits[i]._source.ward_name
+            this.latitude = data.result.hits[i]._source.lat
+            this.longitude = data.result.hits[i]._source.long
+            this.facilityLevel = data.result.hits[i]._source.keph_level_name
 
         }
          
