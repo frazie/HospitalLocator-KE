@@ -88,13 +88,32 @@ app.get('/hospital/:facilityName', async (req,res)=>{
    }
 })
 
-// app.get('/doctors', async (req,res)=>{
-//    try {
-    
-//    } catch (error) {
-    
-//    }
-// }
+
+app.get('/doctors/:doctorName', async (req,res)=>{
+   try {
+    let specialist = req.params.doctorName.toLowerCase()
+    const doctorApi = await fetch(
+        `https://api.healthtools.codeforafrica.org/search/doctors?q=[${specialist}]&per_page=1000`)
+
+        .then((res) => {
+            if (res.ok){
+                return res.json()
+            }else{
+                throw new Error('NETWORK RESPONSE ERROR')
+            }
+            })
+
+        .then(
+            doctor=>{
+                     console.log(doctor)
+                     res.send(doctor)
+            }
+        )
+
+   } catch (error) {
+    console.error('Fetch Error:',error)
+   }
+})
 // app.get('/nurses', async (req,res)=>{
 //    try {
     

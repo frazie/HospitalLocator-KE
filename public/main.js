@@ -1,6 +1,7 @@
 //this is where you put the code communicating between the server while using fetches.
 //hospital search fetch query
 document.getElementById('getButton').addEventListener('click', hosiApiRequest)
+document.getElementById('getButton').addEventListener('click', hosiApiRequest)
 
 async function hosiApiRequest(){
     // try {
@@ -8,15 +9,30 @@ async function hosiApiRequest(){
         const hosiUrl = `http://localhost:4000/hospital/${facilityName}`
 
     try{
-        const response = await fetch(hosiUrl)
-        const data = await response.json()
-        console.log(data)
+        const req = await fetch(hosiUrl)
+        .then(
+            (res) => {
+                if (res.ok){
+                    return res.json()
+                }else{
+                    throw new Error('NETWORK RESPONSE ERROR')
+                }
+            }
+        )
+
+        .then(
+            hospitals=>{
+                    console.log(hospitals)
+            }
+        )
+        // const hospitals = await res.json()
+        // console.log(hospitals)
 
        
         // let institution = []
         // for (let i=0;i<data.result.total;i++){
         
-        // function DisplayFacility(data) {
+        // function DisplayFacility(hospitals) {
         //     this.facility = data.result.hits[i]._source.name;
         //     this.type_facility = data.result.hits[i]._source.facility_type_category
         //     this.owner = data.result.hits[i]._source.owner_type_name
