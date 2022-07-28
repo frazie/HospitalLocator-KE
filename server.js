@@ -5,6 +5,7 @@ const cors = require('cors')
 const { dirname } = require('path')
 const { request } = require('http')
 const PORT = 4000
+
 // middleware
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
