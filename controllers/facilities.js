@@ -36,7 +36,7 @@ module.exports = {
                 facility.push(hosi)
             }
                 
-            JSON.stringify(facility)
+            JSON.stringify(facility.reverse())
                 
             
             res.render('results.ejs', {facility: facility, name: facility.facility, search: institution })
