@@ -1,0 +1,15 @@
+
+<%- include('partials/header') -%>
+    <div class="container" >
+        <p>Search facility by name or location (county/district) within Kenya </p>
+
+        <form action="/facilities/results" method="post">
+            <input type="text" id="location" placeholder="Enter area/location" name="location">
+            <input type="submit">
+        </form>
+            <br>
+        <p>
+            Kindly not that some facilities may not display the services offered. This is not an internal website problem but rather an issue on the main data library from the Ministry of Health
+        </p>
+    </div>
+<%- include('partials/footer') -%>

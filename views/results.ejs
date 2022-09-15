@@ -1,0 +1,42 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <div class="facility container">
+        <div class="container">
+            <span>area searched: <%= search %></span>
+        </div>
+        <br>
+        <%for (let i=0; i < facility.length; i++) {%> <!--opening for loop-->
+        <details>
+            <summary class="name">
+                Facility Name: <%= facility[i].facility %> : <%= facility[i].facilityLevel %>
+            </summary>
+            <div>
+                <ul>
+                    <li>
+                        <span>County: <%= facility[i].county_name %> </span>                      
+                    </li>
+                    <li>
+                        <span>
+                            Constituency: <%= facility[i].constituency %>
+                        </span>
+                    </li>
+                    <li>
+                        <span>Ward: <%= facility[i].ward %></span>
+                    </li>
+                    <li>
+                        <span>Owned by: <%= facility[i].owner %></span>
+                    </li>
+                    <li>
+                        <span>facility type: <%= facility[i].type_facility %></span>
+                    </li>
+                    <li>
+                        <span>Services offered: <%= facility[i].services %></span>
+                    </li>
+                    
+                </ul>
+            </div>
+        </details>
+        <% } %> <!--closing the for loop-->
+    </div>
+</div>
+<%- include('partials/footer') -%>
