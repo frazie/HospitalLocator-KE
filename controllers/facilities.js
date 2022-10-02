@@ -1,4 +1,3 @@
-
 module.exports = {
     getHospital: async (req,res) => {
     
