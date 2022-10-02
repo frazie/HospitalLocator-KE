@@ -1,6 +1,4 @@
 
-import fetch from "node-fetch"
-
 module.exports = {
     getHospital: async (req,res) => {
     
