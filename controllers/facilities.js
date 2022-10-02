@@ -11,7 +11,7 @@ module.exports = {
             let institution = req.body.location
             
             const facilityFetch = await fetch(
-                `http://api.healthtools.codeforafrica.org/search/health-facilities?q=[${institution}]&per_page=1000`
+                `https://api.healthtools.codeforafrica.org/search/health-facilities?q=[${institution}]&per_page=1000`
             )
           
             const data = await facilityFetch.json()
