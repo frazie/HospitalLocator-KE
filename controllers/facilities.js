@@ -1,4 +1,6 @@
 
+import fetch from "node-fetch"
+
 module.exports = {
     getHospital: async (req,res) => {
     
@@ -9,7 +11,7 @@ module.exports = {
             let institution = req.body.location
             
             const facilityFetch = await fetch(
-                `https://api.healthtools.codeforafrica.org/search/health-facilities?q=[${institution}]&per_page=1000`
+                `http://api.healthtools.codeforafrica.org/search/health-facilities?q=[${institution}]&per_page=1000`
             )
           
             const data = await facilityFetch.json()
@@ -38,7 +40,6 @@ module.exports = {
                 
             JSON.stringify(facility.reverse())
                 
-            
             res.render('results.ejs', {facility: facility, name: facility.facility, search: institution })
         
            } catch (error) {
