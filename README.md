@@ -9,7 +9,7 @@ After this, I therefore, choose to develop a way by which one could find the nea
 
 # How Hospital Locator Works
 
-To get the available hospital facilities between one's area. you simply have to search your location and the results will be a list of all medical facilities within the region in Kenya.
+To get the available hospital facilities within one's area. you simply have to search your location and the results will be a list of all medical facilities within the region in Kenya.
 
 # Check Out the Live Application!
 
@@ -17,7 +17,7 @@ The app does not require any form of login making it much more accessible to any
 
 Currently, I am testing the application by hosting it on Cyclic since Heroku announces their plans to drop their free hosting.
 
-[Cyclic](https://hospital-locator-ke.cyclic.app/)
+visit the live site hosted on [Cyclic](https://hospital-locator-ke.cyclic.app/)
 
 ---
 
